@@ -34,8 +34,8 @@ A responsive, modern looking website, for AntherOS.
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
-`bolt install xdg-open` (Or your distro equivalent)urur
+```bolt install xdg-open``` (Or your distro equivalent)
 And because the website uses only HTML, CSS3, and JS, anything else is not needed.
 
-Just run it with `xdg-open index.html`
+Just run it with ```xdg-open index.html```
 *Note: Download the assests and other files with the index.html to get it working*
