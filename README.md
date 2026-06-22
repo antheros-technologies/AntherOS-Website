@@ -5,7 +5,7 @@
 
 A responsive, modern looking website, for AntherOS.
 
-👉 **Live Demo:** [https://antheros.org](https://antheros.org)
+<kbd>👉 **Live Demo:** [https://antheros.org](https://antheros.org) </kbd>
 
 ---
 
