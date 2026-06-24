@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntherOS | Connect with Core Node</title>
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght=400;500&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000000; }
+        .mono-text { font-family: 'JetBrains Mono', monospace; }
+        .glass-card {
+            background: #000000;
+            border: 1px solid rgba(6, 182, 212, 0.08);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(6, 182, 212, 0.35);
+            box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.15);
+        }
+    </style>
+</head>
+<body class="text-slate-300 min-h-screen selection:bg-cyan-500 selection:text-black overflow-x-hidden relative">
+
+    <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none -z-20"></div>
+
+    <nav class="bg-[#000000] border-b border-neutral-900 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 group cursor-pointer">
+                <img src="logo.png" alt="AntherOS Logo" class="h-8 w-8 object-contain bg-black">
+                <span class="text-2xl font-extrabold tracking-tight text-white group-hover:text-cyan-400 transition-colors">
+                    Anther<span class="text-cyan-400">OS</span>
+                </span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-slate-400 hover:text-white text-sm font-medium transition-colors">Return Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-6 pt-20 pb-20">
+        <header class="text-center space-y-4 mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                Communications Module Active
+            </div>
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Connect with the Creator</h1>
+            <p class="text-slate-400 text-sm max-w-md mx-auto">Have queries regarding custom ISO targets, sub-module packages, or programming note architectures? Reach out directly through verified channels.</p>
+        </header>
+
+
+<!--#########################-->
+
+
+<!-- Action Button Grid Matrices (Self-Executing Node Configuration) -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
+    
+    <!-- Gmail Button Engine -->
+    <button onclick="(() => {
+        const target = atob('Y29udGFjdC5hbmFnaGJhcm53YWxAZ21haWwuY29t');
+        const subject = encodeURIComponent('AntherOS Core Ecosystem Inquiry');
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${target}&su=${subject}`, '_blank', 'noopener,noreferrer');
+    })()" class="flex items-center justify-center space-x-2 bg-neutral-950 hover:bg-red-950/20 text-slate-300 hover:text-red-400 border border-neutral-900 hover:border-red-900/30 font-mono text-xs font-bold py-3 px-4 rounded-xl transition-all duration-200 cursor-pointer">
+        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+        <span>Gmail</span>
+    </button>
+
+    <!-- Outlook / Hotmail Button Engine -->
+    <button onclick="(() => {
+        const target = atob('Y29udGFjdC5hbmFnaGJhcm53YWxAZ21haWwuY29t');
+        const subject = encodeURIComponent('AntherOS Core Ecosystem Inquiry');
+        window.open(`https://outlook.live.com/default.aspx?rru=compose&to=${target}&subject=${subject}`, '_blank', 'noopener,noreferrer');
+    })()" class="flex items-center justify-center space-x-2 bg-neutral-950 hover:bg-blue-950/20 text-slate-300 hover:text-blue-400 border border-neutral-900 hover:border-blue-900/30 font-mono text-xs font-bold py-3 px-4 rounded-xl transition-all duration-200 cursor-pointer">
+        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+        <span>Outlook / Hotmail</span>
+    </button>
+
+    <!-- Yahoo Button Engine -->
+    <button onclick="(() => {
+        const target = atob('Y29udGFjdC5hbmFnaGJhcm53YWxAZ21haWwuY29t');
+        const subject = encodeURIComponent('AntherOS Core Ecosystem Inquiry');
+        window.open(`https://compose.mail.yahoo.com/?to=${target}&subject=${subject}`, '_blank', 'noopener,noreferrer');
+    })()" class="flex items-center justify-center space-x-2 bg-neutral-950 hover:bg-purple-950/20 text-slate-300 hover:text-purple-400 border border-neutral-900 hover:border-purple-900/30 font-mono text-xs font-bold py-3 px-4 rounded-xl transition-all duration-200 cursor-pointer">
+        <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+        <span>Yahoo Mail</span>
+    </button>
+
+</div>
+
+
+<!--###############################-->
+
+            <div class="glass-card p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-purple-500/10 border border-purple-500/20 rounded-xl flex items-center justify-center text-purple-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.34 12.452A8.074 8.074 0 0118 12c0-.335-.02-.666-.06-.992M13.5 3.75a8.966 8.966 0 014.288 1.088m-11.576 0A8.966 8.966 0 0110.5 3.75M12 21a8.966 8.966 0 01-4.288-1.088m11.576 0A8.966 8.966 0 0013.5 20.25" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 font-mono text-[10px] block uppercase tracking-wider">Social Hub & Support</span>
+                        <span class="text-white text-sm font-bold">Instagram Direct Matrix</span>
+                    </div>
+                </div>
+                <a href="https://www.instagram.com/antheros_technologies/" target="_blank" class="text-center text-xs font-mono bg-neutral-900 border border-neutral-800 text-purple-400 font-bold px-4 py-2.5 rounded-xl hover:bg-neutral-800 transition-all">
+                    Send DM
+                </a>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-neutral-950/60 border border-dashed border-neutral-900 space-y-2">
+                <div class="flex items-center space-x-2 text-yellow-500/80 text-xs font-mono">
+                    <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse"></span>
+                    <span>Subsystem Update: Discord Channel Offline</span>
+                </div>
+                <p class="text-[11px] text-slate-500 leading-relaxed">
+                    Due to unexpected node administrative complications, our default discord tracking servers have been decoupled. Please queue all development bugs or distribution feedback tasks inside our core organizational GitHub structure or via secure email paths.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-neutral-900 max-w-3xl mx-auto px-6 py-8 text-center text-xs text-slate-600 font-mono">
+        &copy; 2026 AntherOS Technologies. Systems initialized under secure pipelines.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntherOS Core | Control Hub Login</title>
+    <link rel="icon" type="image/png" href="logo.png" sizes="32x32">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;700;800&family=JetBrains+Mono:wght=400;500&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000000; }
+        .mono-text { font-family: 'JetBrains Mono', monospace; }
+        .glass-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(6, 182, 212, 0.1);
+            backdrop-blur: 12px;
+        }
+    </style>
+</head>
+<body class="text-slate-300 min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+
+    <div class="fixed top-1/4 left-1/4 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <div class="fixed bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+
+    <div class="w-full max-w-md glass-card rounded-2xl p-8 border border-neutral-900 shadow-2xl">
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-flex items-center space-x-2 group">
+                <img src="logo.png" alt="AntherOS" class="h-8 w-8 object-contain">
+                <span class="text-xl font-extrabold text-white tracking-tight">Anther<span class="text-cyan-400">OS</span></span>
+            </a>
+            <h2 id="auth-title" class="text-lg font-bold text-white mt-4 tracking-tight">Access Control Hub</h2>
+            <p id="auth-subtitle" class="text-xs text-slate-500 mt-1">Authenticate terminal session to sync user profiles.</p>
+        </div>
+
+        <form id="auth-form" class="space-y-4">
+            <div>
+                <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-500 mb-1.5">Network Identity (Email)</label>
+                <input type="email" id="email" required class="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500/50 transition-colors" placeholder="root@antheros.dev">
+            </div>
+            <div>
+                <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-500 mb-1.5">Security Passphrase</label>
+                <input type="password" id="password" required class="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500/50 transition-colors" placeholder="••••••••">
+            </div>
+
+            <div id="error-message" class="hidden text-xs font-mono bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg break-words"></div>
+
+            <button type="submit" id="submit-btn" class="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-sm py-3 rounded-xl transition-all duration-200 transform active:scale-[0.98]">
+                Initialize Session
+            </button>
+        </form>
+
+        <div class="relative my-6 flex items-center justify-center">
+            <div class="absolute w-full border-t border-neutral-900"></div>
+            <span class="relative bg-black px-3 text-[10px] font-mono uppercase text-slate-600 tracking-widest">Federated Identity Matrix</span>
+        </div>
+
+        <div class="grid grid-cols-1 gap-3">
+            <button id="google-btn" type="button" class="flex items-center justify-center space-x-2 bg-neutral-950 hover:bg-neutral-900 border border-neutral-800 hover:border-neutral-700 rounded-xl py-2.5 transition-all duration-150 text-xs font-medium text-white w-full">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                <span>Continue with Google</span>
+            </button>
+        </div>
+
+        <div class="mt-6 text-center text-xs text-slate-500 border-t border-neutral-900/60 pt-4">
+            <span id="toggle-text">New node deployment?</span> 
+            <button id="toggle-auth-mode" class="text-cyan-400 hover:underline font-medium ml-1">Create an Account</button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
+
+        // Verified Configuration Matrix for antheros-website
+        const firebaseConfig = {
+            apiKey: "AIzaSyDl0Jpx9Sw3ejRNBQxwQtw3BYnkUdt55kY",
+            authDomain: "antheros-website.firebaseapp.com",
+            projectId: "antheros-website",
+            storageBucket: "antheros-website.firebasestorage.app",
+            messagingSenderId: "73258036022",
+            appId: "1:73258036022:web:9a77faf2fce29147006197",
+            measurementId: "G-1FNZS2NM6C"
+        };
+
+        // Init Instance Connections
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const analytics = getAnalytics(app);
+
+        // Core UI DOM Elements
+        const authForm = document.getElementById('auth-form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const submitBtn = document.getElementById('submit-btn');
+        const errorMsg = document.getElementById('error-message');
+        const authTitle = document.getElementById('auth-title');
+        const authSubtitle = document.getElementById('auth-subtitle');
+        const toggleAuthBtn = document.getElementById('toggle-auth-mode');
+        const toggleText = document.getElementById('toggle-text');
+        
+        // Single Sign-On Selectors
+        const googleBtn = document.getElementById('google-btn');
+
+        let isLoginMode = true;
+
+        // Dynamic State Toggle Handling
+        toggleAuthBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            isLoginMode = !isLoginMode;
+            errorMsg.classList.add('hidden');
+            if (isLoginMode) {
+                authTitle.innerText = "Access Control Hub";
+                authSubtitle.innerText = "Authenticate terminal session to sync user profiles.";
+                submitBtn.innerText = "Initialize Session";
+                toggleText.innerText = "New node deployment?";
+                toggleAuthBtn.innerText = "Create an Account";
+            } else {
+                authTitle.innerText = "Deploy User Profile";
+                authSubtitle.innerText = "Register a fresh identity node within the ecosystem database.";
+                submitBtn.innerText = "Compile & Register Identity";
+                toggleText.innerText = "Already registered?";
+                toggleAuthBtn.innerText = "Sign In instead";
+            }
+        });
+
+        // Helper function to handle successfully authenticated user sessions
+        function completeUserSession(user) {
+            localStorage.setItem('antherUser', JSON.stringify({
+                email: user.email,
+                uid: user.uid,
+                photoURL: user.photoURL // Captures avatar source link
+            }));
+            window.location.href = "index.html";
+        }
+
+        // Processing Standard Form Actions
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMsg.classList.add('hidden');
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Processing Auth Script...";
+
+            try {
+                let userCredential;
+                if (isLoginMode) {
+                    userCredential = await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+                } else {
+                    userCredential = await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+                }
+                completeUserSession(userCredential.user);
+            } catch (error) {
+                errorMsg.classList.remove('hidden');
+                errorMsg.innerText = `[ERR_AUTH_FAIL]: ${error.message.replace("Firebase: ", "")}`;
+                submitBtn.disabled = false;
+                submitBtn.innerText = isLoginMode ? "Initialize Session" : "Compile & Register Identity";
+            }
+        });
+
+        // Google Single Sign-On Protocol
+        googleBtn.addEventListener('click', async () => {
+            errorMsg.classList.add('hidden');
+            const provider = new GoogleAuthProvider();
+            try {
+                const result = await signInWithPopup(auth, provider);
+                completeUserSession(result.user);
+            } catch (error) {
+                errorMsg.classList.remove('hidden');
+                errorMsg.innerText = `[ERR_GOOGLE_OAUTH]: ${error.message.replace("Firebase: ", "")}`;
+            }
+        });
+    </script>
+</body>
+</html>
