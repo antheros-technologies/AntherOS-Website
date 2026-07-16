@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Signal Lost - AntherOS</title>
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #000000;
+        }
+
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100__ { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+
+        .animate-pulse-glow {
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="text-slate-300 min-h-screen flex flex-col justify-between overflow-hidden relative selection:bg-cyan-500 selection:text-black">
+
+    <div class="fixed top-1/4 left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-cyan-500/5 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none animate-pulse-glow -z-20"></div>
+    <div class="fixed bottom-1/4 right-1/4 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-indigo-500/5 rounded-full blur-[120px] sm:blur-[160px] pointer-events-none animate-pulse-glow -z-20" style="animation-delay: 2s;"></div>
+
+    <header class="p-6 max-w-7xl w-full mx-auto flex justify-center sm:justify-start">
+        <a href="index.html" class="flex items-center space-x-2 group cursor-pointer">
+            <img src="logo.png" alt="AntherOS Logo" class="h-6 w-6 object-contain bg-black transition-transform duration-300 group-hover:scale-110" onerror="this.style.display='none'">
+            <span class="text-lg font-extrabold tracking-tight text-white transition-all duration-300 group-hover:text-cyan-400">
+                Anther<span class="text-cyan-400 group-hover:text-white">OS</span>
+            </span>
+        </a>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center text-center px-4 z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20 mb-6 mono-text">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+            CRITICAL_ERR // ROUTE_NOT_FOUND
+        </div>
+
+        <h1 class="text-8xl sm:text-9xl md:text-[12rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-neutral-400 to-neutral-900 select-none leading-none mb-4">
+            404
+        </h1>
+
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3">
+            Target Node Missing From Pipeline
+        </h2>
+        <p class="text-sm sm:text-base text-slate-400 max-w-md mx-auto mb-10 leading-relaxed">
+            The page environment layout you are trying to sync with does not exist or has been shifted to a clean partition logic block.
+        </p>
+
+        <a href="index.html" class="bg-gradient-to-r from-cyan-500 to-teal-400 hover:from-cyan-400 hover:to-teal-300 text-black font-extrabold px-6 sm:px-8 py-3.5 rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 shadow-xl shadow-cyan-500/10 text-sm">
+            Return to Core Node
+        </a>
+    </main>
+
+    <footer class="p-6 max-w-7xl w-full mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center text-[11px] font-mono text-neutral-600 tracking-wider uppercase">
+        <div>System State: Operational</div>
+        <div>Diagnostic Code: 0x00000194</div>
+    </footer>
+
+</body>
+</html>
