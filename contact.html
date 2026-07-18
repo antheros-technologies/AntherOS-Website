@@ -10,6 +10,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght=400;500&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000000; }
         .mono-text { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel, .glass-card {
+            background: rgba(255, 255, 255, 0.04) !important;
+            backdrop-filter: blur(16px) saturate(120%) !important;
+            -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
         .glass-card {
             background: #000000;
             border: 1px solid rgba(6, 182, 212, 0.08);

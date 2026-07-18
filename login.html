@@ -10,6 +10,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;700;800&family=JetBrains+Mono:wght=400;500&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000000; }
         .mono-text { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel, .glass-card {
+            background: rgba(255, 255, 255, 0.04) !important;
+            backdrop-filter: blur(16px) saturate(120%) !important;
+            -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
         .glass-card {
             background: rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(6, 182, 212, 0.1);
@@ -19,8 +25,8 @@
 </head>
 <body class="text-slate-300 min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
 
-    <div class="fixed top-1/4 left-1/4 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
-    <div class="fixed bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <div class="fixed top-1/4 left-1/4 w-[400px] glass-panel h-[400px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <div class="fixed bottom-1/4 right-1/4 w-[400px] glass-panel h-[400px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
 
     <div class="w-full max-w-md glass-card rounded-2xl p-8 border border-neutral-900 shadow-2xl">
         <div class="text-center mb-8">
@@ -67,7 +73,7 @@
         </div>
 
         <div class="mt-6 text-center text-xs text-slate-500 border-t border-neutral-900/60 pt-4">
-            <span id="toggle-text">New node deployment?</span> 
+            <span id="toggle-text">New node deployment?</span>
             <button id="toggle-auth-mode" class="text-cyan-400 hover:underline font-medium ml-1">Create an Account</button>
         </div>
     </div>
@@ -103,7 +109,7 @@
         const authSubtitle = document.getElementById('auth-subtitle');
         const toggleAuthBtn = document.getElementById('toggle-auth-mode');
         const toggleText = document.getElementById('toggle-text');
-        
+
         // Single Sign-On Selectors
         const googleBtn = document.getElementById('google-btn');
 
