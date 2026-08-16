@@ -38,4 +38,8 @@ Follow these instructions to get a copy of the project up and running on your lo
 And because the website uses only HTML, CSS3, and JS, anything else is not needed.
 
 Just run it with ```xdg-open index.html```
-*Note: Download the assests and other files with the index.html to get it working*
+*Note: Download the assests and other files with the index.html to get it working*.
+
+## Contribution 
+
+We would be glad for any contributions made to our website. Contribute on the contributions page, and your name will be added to the repository and the website.
