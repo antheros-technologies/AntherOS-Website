@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Archive | AntherOS</title>
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Core Cyber Grid Background */
+        .cyber-grid {
+            position: fixed;
+            bottom: -50%;
+            left: -20%;
+            width: 140%;
+            height: 150%;
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px), 
+                linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px);
+            background-size: 60px 60px;
+            transform: perspective(600px) rotateX(60deg);
+            animation: gridPan 10s linear infinite;
+            z-index: -30;
+            pointer-events: none;
+        }
+
+        .grid-fade {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(to bottom, #000000 30%, transparent 100%);
+            z-index: -29;
+            pointer-events: none;
+        }
+
+        @keyframes gridPan {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 60px; }
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #000000;
+        }
+
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+
+        .animate-pulse-glow {
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        /* Frosted Glass UI Overrides */
+        .glass-panel, .glass-card {
+            background: rgba(255, 255, 255, 0.04) !important;
+            backdrop-filter: blur(16px) saturate(120%) !important;
+            -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .glass-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.15);
+        }
+    </style>
+</head>
+<body class="text-slate-300 min-h-screen selection:bg-cyan-500 selection:text-black overflow-x-hidden flex flex-col">
+
+    <div class="cyber-grid"></div>
+    <div class="grid-fade"></div>
+    <div class="fixed top-0 left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-cyan-500/5 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none animate-pulse-glow -z-20"></div>
+    <div class="fixed bottom-0 right-1/4 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-indigo-500/5 rounded-full blur-[120px] sm:blur-[160px] pointer-events-none animate-pulse-glow -z-20" style="animation-delay: 2s;"></div>
+
+    <nav class="sticky top-0 z-50 glass-panel border-b border-neutral-900 px-4 sm:px-6 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-3">
+            <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 group cursor-pointer shrink-0">
+                <img src="logo.png" alt="AntherOS Logo" class="h-7 w-7 sm:h-8 sm:w-8 object-contain bg-black transition-transform duration-300 group-hover:scale-110">
+                <span class="text-lg sm:text-2xl font-extrabold tracking-tight text-white transition-all duration-300 group-hover:text-cyan-400">
+                    Anther<span class="text-cyan-400 group-hover:text-white">OS</span>
+                </span>
+            </a>
+            
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <a href="index.html" class="text-slate-400 hover:text-white transition-colors duration-200 text-sm font-medium flex items-center gap-2">
+                    <span>←</span> Core Matrix
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative max-w-5xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 pb-12 w-full">
+        <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-6 glass-panel">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0"></span>
+            <span class="mono-text uppercase tracking-wider">System Architecture Vault</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-4">
+            Release <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400">History.</span>
+        </h1>
+        <p class="text-sm sm:text-base text-slate-400 max-w-2xl font-normal leading-relaxed">
+            Access previous iteration branches, LTS kernels, and legacy architectural builds of AntherOS. Flash using standard block writing utilities.
+        </p>
+    </header>
+
+    <main class="flex-grow w-full max-w-5xl mx-auto px-4 sm:px-6 pb-24 relative z-10 space-y-6">
+
+        <!-- ANTHEROS MK2 (Currently Building Status) -->
+        <div class="glass-card p-6 sm:p-8 rounded-2xl border border-amber-500/40 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-6 relative z-10">
+                <div class="space-y-4 flex-grow">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-2xl font-bold text-white tracking-tight">AntherOS MK2</h2>
+                        <span class="px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase bg-amber-500/10 text-amber-400 rounded border border-amber-500/20 mono-text animate-pulse">In Building • Coming Soon</span>
+                    </div>
+                    
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-2xl">
+                        The upcoming performance iteration. Currently compiling and undergoing final stability stress-tests. Going out soon with advanced scheduling models and driver packages.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-2.5 py-1 text-[10px] font-semibold tracking-wider text-slate-500 bg-neutral-900 border border-neutral-800 rounded mono-text">Status: Compiling Image</span>
+                        <span class="px-2.5 py-1 text-[10px] font-semibold tracking-wider text-slate-500 bg-neutral-900 border border-neutral-800 rounded mono-text">Target: Release Imminent</span>
+                    </div>
+                </div>
+
+                <div class="shrink-0 w-full md:w-auto">
+                    <button disabled class="w-full md:w-auto text-center bg-neutral-900 text-neutral-500 border border-neutral-800 font-bold px-6 py-3 rounded-xl cursor-not-allowed text-sm">
+                        Building Pipeline...
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ANTHEROS MK1 (With Integrity Hash Section) -->
+        <div class="glass-card p-6 sm:p-8 rounded-2xl border border-neutral-800 hover:border-neutral-700 transition-opacity">
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                <div class="space-y-4 flex-grow">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-xl font-bold text-white tracking-tight">AntherOS MK1</h2>
+                        <span class="px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase bg-neutral-800 text-slate-400 rounded border border-neutral-700 mono-text">Initial Node | Stable</span>
+                    </div>
+                    
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-2xl">
+                        The original bare-metal proof of concept based heavily on the Pop!_OS core. Features the first stable environment.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-2.5 py-1 text-[10px] font-semibold tracking-wider text-slate-500 bg-neutral-900 border border-neutral-800 rounded mono-text">Kernel: 7.0.11-76070011-generic</span>
+                        <span class="px-2.5 py-1 text-[10px] font-semibold tracking-wider text-slate-500 bg-neutral-900 border border-neutral-800 rounded mono-text">Size: ~8.2 GB</span>
+                    </div>
+
+                    <!-- SHA256 Hash Box for MK1 -->
+                    <div class="sha-display-box p-3 bg-neutral-950 border border-neutral-900 rounded-xl text-left w-full max-w-xl glass-panel mt-4">
+                        <div class="flex justify-between items-center mb-1.5 gap-2">
+                            <span class="text-[10px] font-bold tracking-wider uppercase text-slate-500 font-mono">MK1 ISO SHA256 Integrity Key</span>
+                            <span class="copy-status text-[10px] text-cyan-400 font-semibold uppercase tracking-wider font-mono opacity-0 transition-opacity duration-200">Copied!</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 bg-black px-3 py-2 rounded-lg border border-neutral-900 overflow-hidden">
+                            <code class="sha-string text-xs font-mono text-emerald-400 break-all select-all">8cb39735e7d7888068e1cb4cda74321d534bb80f816178bb9a2451e9d1ba779f</code>
+                            <button onclick="copyShaText(this)" class="text-slate-500 hover:text-white transition-colors p-1 flex shrink-0 cursor-pointer" title="Copy to clipboard">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="shrink-0 w-full md:w-auto">
+                    <!-- Replace '#' with your actual MK1 ISO link -->
+                    <a href="#" class="w-full md:w-auto text-center bg-gradient-to-r from-cyan-500 to-teal-400 hover:from-cyan-400 hover:to-teal-300 text-black font-extrabold px-6 py-3 rounded-xl transition-all duration-300 block shadow-lg shadow-cyan-500/20 text-sm">
+                        Download MK1.iso
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="border-t border-neutral-900 bg-black py-10 px-4 sm:px-6 relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+            <div class="flex items-center space-x-2">
+                <span class="text-sm font-extrabold text-white">Anther<span class="text-cyan-400">OS</span></span>
+                <span class="text-xs text-slate-600 font-medium tracking-tight">|</span>
+                <span class="text-xs text-slate-500 font-medium">Next-Generation Operating System Ecosystem</span>
+            </div>
+            <p class="text-xs text-slate-600 font-medium tracking-normal">
+                &copy; 2026 AntherOS Technologies. Compiled open source assets managed under community guidelines.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function copyShaText(copyBtn) {
+            const container = copyBtn.closest('.sha-display-box');
+            const textToCopy = container.querySelector('.sha-string').innerText;
+            const statusLabel = container.querySelector('.copy-status');
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                statusLabel.classList.remove('opacity-0');
+                statusLabel.classList.add('opacity-100');
+                setTimeout(() => {
+                    statusLabel.classList.remove('opacity-100');
+                    statusLabel.classList.add('opacity-0');
+                }, 2000);
+            }).catch(err => console.error('Failed to copy hash:', err));
+        }
+    </script>
+</body>
+</html>
